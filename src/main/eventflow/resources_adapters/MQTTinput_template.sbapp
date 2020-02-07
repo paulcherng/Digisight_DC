@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modify version="10.4.3_a45545bc0fa864b6dd457e084eb653f6e2004e05">
+    <add>
+        <annotations>
+            <annotation name="hygienic"/>
+        </annotations>
+        <type-metadata>
+            <param name="type" value="module"/>
+            <param name="fully-qualified-name" value="resources_adapters.MQTTinput_template"/>
+        </type-metadata>
+        <memory-model-settings/>
+        <implements module-reference="com.iisigroup.iip.customize.SchemaControl"/>
+        <import from="com.iisigroup.iip.customize.SchemaControl"/>
+        <parameter-definitions>
+            <parameter default="testTopic" name="Topic"/>
+        </parameter-definitions>
+        <dynamic-variables/>
+        <box name="InputAdapter" type="inputadapter">
+            <output port="1" stream="out:InputAdapter_1"/>
+            <param name="start:state" value="true"/>
+            <param name="javaclass" value="com.streambase.sb.adapter.mqtt.client.subscribe.MQTTClientSubscribe"/>
+            <param name="CommandField" value="Command"/>
+            <param name="EnableControlPort" value="false"/>
+            <param name="EnableStatusPort" value="false"/>
+            <param name="LogLevel" value="INFO"/>
+            <param name="initialSubscriptions-col0.0" value="${Topic}"/>
+            <param name="initialSubscriptions-col1.0" value="2"/>
+            <param name="mqttConnectionElement" value="localTest"/>
+            <param name="outputAsRawBytes" value="false"/>
+            <param name="qosField" value="Qos"/>
+            <param name="topicField" value="Topic"/>
+        </box>
+        <box name="Map" type="map">
+            <input port="1" stream="out:InputAdapter_1"/>
+            <output port="1" stream="OutputStream"/>
+            <target-list>
+                <item name="input" selection="none"/>
+                <expressions>
+                    <include field="UUID">uuid()</include>
+                    <include field="dataContent">Message</include>
+                </expressions>
+            </target-list>
+        </box>
+        <output-stream name="OutputStream"/>
+    </add>
+</modify>

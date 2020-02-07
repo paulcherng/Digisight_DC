@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><application-layout>
+    <component name="InputAdapter">
+        <param name="gui:x" value="-159"/>
+        <param name="gui:y" value="-60"/>
+    </component>
+    <component name="Map">
+        <param name="gui:x" value="-27"/>
+        <param name="gui:y" value="-60"/>
+    </component>
+    <component name="WebSocketIn">
+        <param name="gui:x" value="62"/>
+        <param name="gui:y" value="-60"/>
+    </component>
+</application-layout>

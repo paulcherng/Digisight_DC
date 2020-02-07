@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modify version="10.4.3_a45545bc0fa864b6dd457e084eb653f6e2004e05">
+    <add>
+        <annotations>
+            <annotation name="hygienic"/>
+        </annotations>
+        <type-metadata>
+            <param name="type" value="module"/>
+            <param name="fully-qualified-name" value="resources_adapters.FileReader_template"/>
+        </type-metadata>
+        <memory-model-settings/>
+        <dynamic-variables/>
+        <stream name="configIn">
+            <schema>
+                <field name="filePath" type="string"/>
+                <field name="unhandledConfig" type="capture" type-name="unhandledConfigType"/>
+            </schema>
+        </stream>
+        <box name="Map" type="map">
+            <input port="1" stream="configIn"/>
+            <output port="1" stream="out:Map_1"/>
+            <target-list>
+                <item name="input" selection="none">
+                    <include field="filePath"/>
+                </item>
+            </target-list>
+        </box>
+        <box name="fileReader" type="inputadapter">
+            <input port="1" stream="out:Map_1"/>
+            <output port="1" stream="out:fileReader_1"/>
+            <output port="2" stream="out:fileReader_2"/>
+            <param name="start:state" value="true"/>
+            <param name="javaclass" value="com.streambase.sb.adapter.filereader.FileReader"/>
+            <param name="Charset" value=""/>
+            <param name="UseDefaultCharset" value="true"/>
+            <param name="blobData" value="false"/>
+            <param name="defaultFileName" value=""/>
+            <param name="enableControlPort" value="true"/>
+            <param name="enableStatusPort" value="true"/>
+            <param name="extractCompressedBlobData" value="true"/>
+            <param name="fileContentsFieldName" value="FileContents"/>
+            <param name="filePattern" value="*.*"/>
+            <param name="filePatternField" value=""/>
+            <param name="filenameField" value=""/>
+            <param name="lineSeparator" value=""/>
+            <param name="logLevel" value="INFO"/>
+            <param name="oneTuplePerLine" value="false"/>
+            <param name="passThroughFields" value="false"/>
+            <param name="preserveNewLines" value="false"/>
+            <param name="readAsResource" value="true"/>
+            <param name="readDefaultFileAtStartup" value="false"/>
+            <param name="readFilesSynchronously" value="false"/>
+            <param name="recurseSubFolders" value="true"/>
+            <param name="recurseSubFoldersField" value=""/>
+            <param name="replacementDataFieldName" value=""/>
+        </box>
+        <box name="Map2" type="map">
+            <input port="1" stream="out:fileReader_2"/>
+            <output port="1" stream="OutputStream"/>
+            <target-list>
+                <item name="input" selection="none"/>
+                <expressions>
+                    <include field="Data">FileContents</include>
+                </expressions>
+            </target-list>
+        </box>
+        <output-stream name="OutputStream"/>
+    </add>
+</modify>

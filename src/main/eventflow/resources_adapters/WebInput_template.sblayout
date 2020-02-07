@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><application-layout>
+    <component name="InputStream">
+        <param name="gui:x" value="-157"/>
+        <param name="gui:y" value="83"/>
+    </component>
+    <component name="Java">
+        <param name="gui:x" value="274"/>
+        <param name="gui:y" value="34"/>
+        <param name="gui:height" value="61"/>
+    </component>
+    <component name="Map">
+        <param name="gui:x" value="171"/>
+        <param name="gui:y" value="133"/>
+        <param name="gui:bends:1" value="141,123;151,163"/>
+    </component>
+    <component name="Map2">
+        <param name="gui:x" value="171"/>
+        <param name="gui:y" value="34"/>
+        <param name="gui:bends:1" value="133,103;137,64"/>
+    </component>
+    <component name="Split">
+        <param name="gui:x" value="66"/>
+        <param name="gui:y" value="83"/>
+    </component>
+    <component name="webInput">
+        <param name="gui:x" value="-41"/>
+        <param name="gui:y" value="83"/>
+        <param name="gui:height" value="61"/>
+    </component>
+    <component name="OutputStream">
+        <param name="gui:x" value="274"/>
+        <param name="gui:y" value="133"/>
+    </component>
+</application-layout>

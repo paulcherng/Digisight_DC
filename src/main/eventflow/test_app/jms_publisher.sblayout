@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><application-layout>
+    <component name="InputStream">
+        <param name="gui:x" value="-53"/>
+        <param name="gui:y" value="13"/>
+    </component>
+    <component name="Java">
+        <param name="gui:x" value="59"/>
+        <param name="gui:y" value="13"/>
+    </component>
+    <component name="Java2">
+        <param name="gui:x" value="-53"/>
+        <param name="gui:y" value="132"/>
+    </component>
+    <component name="OutputStream">
+        <param name="gui:x" value="59"/>
+        <param name="gui:y" value="132"/>
+    </component>
+</application-layout>

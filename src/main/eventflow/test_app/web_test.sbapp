@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modify version="10.4.3_a45545bc0fa864b6dd457e084eb653f6e2004e05">
+    <add>
+        <annotations>
+            <annotation name="hygienic"/>
+        </annotations>
+        <type-metadata>
+            <param name="type" value="module"/>
+            <param name="fully-qualified-name" value="test_app.web_test"/>
+        </type-metadata>
+        <memory-model-settings/>
+        <dynamic-variables/>
+        <stream name="InputStream">
+            <schema>
+                <field name="Field1" type="string"/>
+                <field name="Field2" type="int"/>
+                <field name="Field3" type="double"/>
+            </schema>
+        </stream>
+        <stream name="InputStream2">
+            <schema>
+                <field name="Field1" type="string"/>
+                <field name="Field2" type="int"/>
+                <field name="Field3" type="double"/>
+            </schema>
+        </stream>
+        <box name="Map2" type="map">
+            <input port="1" stream="InputStream2"/>
+            <output port="1" stream="out:Map2_1"/>
+            <target-list>
+                <item name="input" selection="none"/>
+                <expressions>
+                    <include field="URL">"http://localhost:10090/test?Field1="+Field1+"&amp;Field2="+Field2+"&amp;Field3="+Field3</include>
+                </expressions>
+            </target-list>
+        </box>
+        <box name="webInput" type="java">
+            <input port="1" stream="InputStream"/>
+            <output port="1" stream="out:webInput_1"/>
+            <param name="start:state" value="true"/>
+            <param name="javaclass" value="com.streambase.sb.adapter.webserver.streams.WebInput"/>
+            <param name="contextPath" value="/test"/>
+            <param name="linkedWebOutputPath" value="webInputResponse"/>
+            <param name="outputRequestMetadata" value="false"/>
+            <param name="timestampFormat" value="yyyy-MM-dd HH:mm:ss.SSSZ"/>
+        </box>
+        <box name="InputAdapter" type="inputadapter">
+            <input port="1" stream="out:Map2_1"/>
+            <output port="1" stream="out:InputAdapter_1"/>
+            <output port="2" stream="out:InputAdapter_2"/>
+            <param name="start:state" value="true"/>
+            <param name="javaclass" value="com.streambase.sb.adapter.webreader.WebReader"/>
+            <param name="BasicAuthEnabled" value="false"/>
+            <param name="BasicAuthPassword" value=""/>
+            <param name="BasicAuthUsername" value=""/>
+            <param name="Charset" value=""/>
+            <param name="ConnectTimeout" value="0"/>
+            <param name="EnableControlPort" value="true"/>
+            <param name="EnablePassThroughFields" value="false"/>
+            <param name="HTTPRequestTypeOption" value="GET"/>
+            <param name="IgnoreCertificateErrors" value="false"/>
+            <param name="MaintainLineSeparatorCharacters" value="false"/>
+            <param name="OutputBlankLines" value="false"/>
+            <param name="OutputNullTupleOnCompletion" value="false"/>
+            <param name="OutputTuplePerLine" value="false"/>
+            <param name="PollFrequency" value="10000"/>
+            <param name="ProcessAsFileDownload" value="false"/>
+            <param name="ProxyHost" value=""/>
+            <param name="ProxyPass" value=""/>
+            <param name="ProxyPort" value=""/>
+            <param name="ProxyUser" value=""/>
+            <param name="ReadTimeout" value="0"/>
+            <param name="Url" value=""/>
+            <param name="UseDefaultCharset" value="true"/>
+            <param name="UseProxy" value="false"/>
+            <param name="defaultPostData" value=""/>
+            <param name="defaultURLEncode" value="false"/>
+            <param name="defaultURLEncodePostData" value="false"/>
+            <param name="logLevel" value="INFO"/>
+            <param name="unescapeHtmlResults" value="false"/>
+        </box>
+        <box name="webInputResponse" type="java">
+            <input port="1" stream="out:webInput_1"/>
+            <output port="1" stream="out:webInputResponse_1"/>
+            <param name="start:state" value="true"/>
+            <param name="javaclass" value="com.streambase.sb.adapter.webserver.streams.WebInputResponse"/>
+            <param name="timestampFormat" value="yyyy-MM-dd HH:mm:ss.SSSZ"/>
+        </box>
+        <box name="Map" type="map">
+            <input port="1" stream="out:webInputResponse_1"/>
+            <output port="1" stream="OutputStream"/>
+            <target-list>
+                <item name="input" selection="all">
+                    <remove field="SB_ResponseId"/>
+                </item>
+            </target-list>
+        </box>
+        <output-stream name="OutputStream"/>
+    </add>
+</modify>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modify version="10.4.3_a45545bc0fa864b6dd457e084eb653f6e2004e05">
+    <add>
+        <annotations>
+            <annotation name="hygienic"/>
+        </annotations>
+        <type-metadata>
+            <param name="type" value="module"/>
+            <param name="fully-qualified-name" value="test_app.mqtt_publisher"/>
+        </type-metadata>
+        <memory-model-settings/>
+        <dynamic-variables/>
+        <stream name="InputStream">
+            <schema>
+                <field name="Topic" type="string"/>
+                <field name="Payload" type="string"/>
+                <field name="Qos" type="int"/>
+            </schema>
+        </stream>
+        <box name="InputAdapter" type="inputadapter">
+            <output port="1" stream="OutputStream"/>
+            <param name="start:state" value="true"/>
+            <param name="javaclass" value="com.streambase.sb.adapter.mqtt.client.subscribe.MQTTClientSubscribe"/>
+            <param name="CommandField" value="Command"/>
+            <param name="EnableControlPort" value="false"/>
+            <param name="EnableStatusPort" value="false"/>
+            <param name="LogLevel" value="INFO"/>
+            <param name="initialSubscriptions-col0.0" value="testTopic"/>
+            <param name="initialSubscriptions-col1.0" value="2"/>
+            <param name="mqttConnectionElement" value="localTest"/>
+            <param name="outputAsRawBytes" value="false"/>
+            <param name="qosField" value="Qos"/>
+            <param name="topicField" value="Topic"/>
+        </box>
+        <output-stream name="OutputStream"/>
+        <box name="OutputAdapter" type="outputadapter">
+            <input port="1" stream="InputStream"/>
+            <param name="start:state" value="true"/>
+            <param name="javaclass" value="com.streambase.sb.adapter.mqtt.client.publish.MQTTClientPublish"/>
+            <param name="CommandField" value="Command"/>
+            <param name="EnableControlPort" value="false"/>
+            <param name="EnableStatusPort" value="false"/>
+            <param name="LogLevel" value="INFO"/>
+            <param name="enableDeliveryCompleteStatusMessages" value="false"/>
+            <param name="enablePendingDeliveryTokensPort" value="false"/>
+            <param name="enablePublishedStatusMessages" value="false"/>
+            <param name="mqttConnectionElement" value="localTest"/>
+            <param name="payloadField" value="Payload"/>
+            <param name="qosField" value="Qos"/>
+            <param name="retainedField" value="Retained"/>
+            <param name="topicField" value="Topic"/>
+        </box>
+    </add>
+</modify>

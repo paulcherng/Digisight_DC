@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- vim: set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab : -->
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.iisigroup.iip</groupId>
+	<artifactId>dataConnect_Template</artifactId>
+	<packaging>ep-eventflow-fragment</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>dataConnect_Template</name>
+	<description>My EventFlow Fragment</description>
+
+	<!-- common definitions for this version of StreamBase -->
+	<parent>
+		<groupId>com.tibco.ep.sb.parent</groupId>
+		<artifactId>ep-eventflow-fragment</artifactId>
+		<version>10.4.3</version>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>7.2.1.jre8</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tibco.ep.sb.adapter</groupId>
+			<artifactId>fileio</artifactId>
+			<version>10.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tibco.ep.sb.adapter</groupId>
+			<artifactId>webreader</artifactId>
+			<version>10.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.iisigroup.iip</groupId>
+			<artifactId>utility</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ep-eventflow-fragment</type>
+		</dependency>
+		<dependency>
+			<groupId>com.tibco.ep.sb.adapter</groupId>
+			<artifactId>webserver</artifactId>
+			<version>10.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tibco.ep.sb.adapter</groupId>
+			<artifactId>jms</artifactId>
+			<version>10.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tibco.tibjms</groupId>
+			<artifactId>tibjms</artifactId>
+			<version>8.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tibco.ep.sb</groupId>
+			<artifactId>dt-manager</artifactId>
+			<version>10.4.3</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.tibco.ep.sb.adapter</groupId>
+			<artifactId>kafka</artifactId>
+			<version>10.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.tibco.ep.sb.adapter</groupId>
+			<artifactId>mqtt-client</artifactId>
+			<version>10.4.3</version>
+		</dependency>
+	</dependencies>
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<name>Releases</name>
+			<url>http://192.168.62.45:8081/repository/maven-public</url>
+		</repository>
+	</repositories>
+</project>

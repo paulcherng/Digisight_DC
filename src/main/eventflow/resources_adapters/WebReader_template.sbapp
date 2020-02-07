@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modify version="10.4.3_a45545bc0fa864b6dd457e084eb653f6e2004e05">
+    <add>
+        <annotations>
+            <annotation name="hygienic"/>
+        </annotations>
+        <type-metadata>
+            <param name="type" value="module"/>
+            <param name="fully-qualified-name" value="resources_adapters.WebReader_template"/>
+        </type-metadata>
+        <memory-model-settings/>
+        <dynamic-variables/>
+        <stream name="ConfigIn">
+            <schema>
+                <field name="URL" type="string"/>
+                <field name="unhandledConfig" type="capture" type-name="unhandledConfig"/>
+            </schema>
+        </stream>
+        <box name="webReader" type="inputadapter">
+            <input port="1" stream="ConfigIn"/>
+            <output port="1" stream="out:webReader_1"/>
+            <output port="2" stream="out:webReader_2"/>
+            <param name="start:state" value="true"/>
+            <param name="javaclass" value="com.streambase.sb.adapter.webreader.WebReader"/>
+            <param name="BasicAuthEnabled" value="false"/>
+            <param name="BasicAuthPassword" value=""/>
+            <param name="BasicAuthUsername" value=""/>
+            <param name="Charset" value=""/>
+            <param name="ConnectTimeout" value="0"/>
+            <param name="EnableControlPort" value="true"/>
+            <param name="EnablePassThroughFields" value="true"/>
+            <param name="HTTPRequestTypeOption" value="GET"/>
+            <param name="IgnoreCertificateErrors" value="false"/>
+            <param name="MaintainLineSeparatorCharacters" value="false"/>
+            <param name="OutputBlankLines" value="false"/>
+            <param name="OutputNullTupleOnCompletion" value="false"/>
+            <param name="OutputTuplePerLine" value="false"/>
+            <param name="PollFrequency" value="10000"/>
+            <param name="ProcessAsFileDownload" value="false"/>
+            <param name="ProxyHost" value=""/>
+            <param name="ProxyPass" value=""/>
+            <param name="ProxyPort" value=""/>
+            <param name="ProxyUser" value=""/>
+            <param name="ReadTimeout" value="0"/>
+            <param name="Url" value=""/>
+            <param name="UseDefaultCharset" value="true"/>
+            <param name="UseProxy" value="false"/>
+            <param name="defaultPostData" value=""/>
+            <param name="defaultURLEncode" value="false"/>
+            <param name="defaultURLEncodePostData" value="false"/>
+            <param name="logLevel" value="INFO"/>
+            <param name="unescapeHtmlResults" value="false"/>
+        </box>
+        <box name="Map" type="map">
+            <input port="1" stream="out:webReader_2"/>
+            <output port="1" stream="rawDataOut"/>
+            <target-list>
+                <item name="input" selection="none">
+                    <include field="Data"/>
+                </item>
+            </target-list>
+        </box>
+        <output-stream name="rawDataOut"/>
+    </add>
+</modify>
