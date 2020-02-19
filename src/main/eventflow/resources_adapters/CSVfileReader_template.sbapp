@@ -9,8 +9,8 @@
             <param name="fully-qualified-name" value="resources_adapters.CSVfileReader_template"/>
         </type-metadata>
         <memory-model-settings/>
-        <implements module-reference="com.iisigroup.iip.customize.SchemaControl"/>
-        <import from="com.iisigroup.iip.customize.SchemaControl"/>
+        <implements module-reference="com.iisigroup.iip.schemacontrol.SchemaControl"/>
+        <import from="com.iisigroup.iip.schemacontrol.SchemaControl"/>
         <parameter-definitions>
             <parameter default="&quot;&quot;" name="filePath"/>
         </parameter-definitions>

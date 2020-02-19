@@ -9,8 +9,8 @@
             <param name="fully-qualified-name" value="com.iisigroup.iip.customize.Buffer2LocalFile"/>
         </type-metadata>
         <memory-model-settings/>
-        <implements module-reference="com.iisigroup.iip.customize.SchemaControl"/>
-        <import from="com.iisigroup.iip.customize.SchemaControl"/>
+        <implements module-reference="com.iisigroup.iip.schemacontrol.SchemaControl"/>
+        <import from="com.iisigroup.iip.schemacontrol.SchemaControl"/>
         <parameter-definitions>
             <parameter default="SrcID" name="SrcID"/>
             <parameter default="192.168.61.19:9092" name="Broker"/>
@@ -130,7 +130,7 @@
             <param name="enableStatusPort" value="false"/>
             <param name="jsonFieldName" value="message"/>
             <param name="logLevel" value="WARN"/>
-            <param name="outputSchema" value="rawData"/>
+            <param name="outputSchema" value="AdapterOut"/>
             <param name="passThroughFieldsFieldName" value="PassThroughFields"/>
             <param name="timestampFormat" value="yyyy-MM-dd HH:mm:ss.SSSZ"/>
         </box>

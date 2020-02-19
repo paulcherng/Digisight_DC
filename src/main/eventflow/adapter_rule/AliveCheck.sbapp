@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modify version="10.4.3_a45545bc0fa864b6dd457e084eb653f6e2004e05">
+    <add>
+        <annotations>
+            <annotation name="hygienic"/>
+        </annotations>
+        <type-metadata>
+            <param name="type" value="module"/>
+            <param name="fully-qualified-name" value="adapter_rule.AliveCheck"/>
+        </type-metadata>
+        <memory-model-settings/>
+        <parameter-definitions>
+            <parameter default="30000" name="aliveInterval"/>
+        </parameter-definitions>
+        <dynamic-variables>
+            <dynamic-variable initial-expression="long(0)" name="lastTime" setter-expression="input.Time" setter-stream="OutputStream"/>
+        </dynamic-variables>
+        <stream name="InputStream">
+            <schema>
+                <field name="inputData" type="capture" type-name="inputField"/>
+            </schema>
+        </stream>
+        <box name="Metronome" type="metronome">
+            <output port="1" stream="out:Metronome_1"/>
+            <param name="interval" value="1"/>
+            <param name="timestamp-field" value="time"/>
+        </box>
+        <box name="Map" type="map">
+            <input port="1" stream="InputStream"/>
+            <output port="1" stream="OutputStream"/>
+            <target-list>
+                <item name="input" selection="none"/>
+                <expressions>
+                    <include field="Time">nanotime()</include>
+                </expressions>
+            </target-list>
+        </box>
+        <box name="Map2" type="map">
+            <input port="1" stream="out:Metronome_1"/>
+            <output port="1" stream="out:Map2_1"/>
+            <target-list>
+                <item name="input" selection="none"/>
+                <expressions>
+                    <include field="time">nanotime()</include>
+                </expressions>
+            </target-list>
+        </box>
+        <output-stream name="OutputStream"/>
+        <box name="Filter" type="filter">
+            <input port="1" stream="out:Map2_1"/>
+            <output port="1" stream="OutputStream3"/>
+            <param name="autogen-nomatch-port" value="false"/>
+            <param name="expression.0" value="long(time)-long(lastTime)&gt;${aliveInterval}"/>
+        </box>
+        <box name="Map3" type="map">
+            <input port="1" stream="out:Map2_1"/>
+            <output port="1" stream="OutputStream2"/>
+            <target-list>
+                <item name="input" selection="all"/>
+                <expressions>
+                    <include field="lastTime">lastTime</include>
+                </expressions>
+            </target-list>
+        </box>
+        <output-stream name="OutputStream2"/>
+        <output-stream name="OutputStream3"/>
+    </add>
+</modify>

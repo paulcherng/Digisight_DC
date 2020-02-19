@@ -137,8 +137,8 @@
             <param name="output-count" value="2"/>
         </box>
         <module-reference name="ConverterPart">
-            <input name="RawDataIn" port="1" stream="out:Split_2"/>
-            <output name="ConvertedDataOut" port="1" stream="out:ConverterPart_1"/>
+            <input name="ConverterInput" port="1" stream="out:Split_2"/>
+            <output name="ConverterOutput" port="1" stream="out:ConverterPart_1"/>
             <param name="file" value="com.iisigroup.iip.customize.Converter_example"/>
             <parameter-bindings>
                 <binding name="SrcID" value="${SrcID}"/>
@@ -180,9 +180,9 @@
         </box>
         <module-reference name="ValidationPart">
             <input name="LoadRuleCommandIn" port="1" stream="out:Split2_1"/>
-            <input name="ConvertedDataIn" port="2" stream="out:ConverterOutUnion_1"/>
+            <input name="ValidationInput" port="2" stream="out:ConverterOutUnion_1"/>
             <output name="RuleListOut" port="1" stream="out:ValidationPart_1"/>
-            <output name="ValidatedDataOut" port="2" stream="out:ValidationPart_2"/>
+            <output name="ValidationOutput" port="2" stream="out:ValidationPart_2"/>
             <param name="file" value="com.iisigroup.iip.customize.Validation_example"/>
         </module-reference>
         <box name="ValidationLPSwitch" type="filter">

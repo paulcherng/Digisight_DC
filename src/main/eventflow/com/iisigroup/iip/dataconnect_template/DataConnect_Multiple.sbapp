@@ -39,7 +39,8 @@
         <module-reference name="Buffer2LocalFileraw">
             <input name="ReloadCommandIn" port="1" stream="out:Split2_2"/>
             <output name="FolderList" port="1" stream="out:Buffer2LocalFileraw_1"/>
-            <output name="TimeFormatConfig" port="2" stream="out:Buffer2LocalFileraw_2"/>
+            <output name="RootPathConfig" port="2" stream="out:Buffer2LocalFileraw_2"/>
+            <output name="TimeFormatConfig" port="3" stream="out:Buffer2LocalFileraw_3"/>
             <param name="file" value="com.iisigroup.iip.customize.Buffer2LocalFile"/>
             <parameter-bindings>
                 <binding name="SrcID" value="${SrcID}"/>
@@ -137,8 +138,8 @@
             <param name="output-count" value="2"/>
         </box>
         <module-reference name="ConverterPart">
-            <input name="RawDataIn" port="1" stream="out:Split_2"/>
-            <output name="ConvertedDataOut" port="1" stream="out:ConverterPart_1"/>
+            <input name="ConverterInput" port="1" stream="out:Split_2"/>
+            <output name="ConverterOutput" port="1" stream="out:ConverterPart_1"/>
             <param name="file" value="com.iisigroup.iip.customize.Converter_example"/>
             <parameter-bindings>
                 <binding name="SrcID" value="${SrcID}"/>
@@ -180,8 +181,8 @@
         </box>
         <module-reference name="Validation">
             <input name="LoadRuleCommandIn" port="1" stream="out:Split2_1"/>
-            <input name="ConvertedDataIn" port="2" stream="out:ConverterOutUnion_1"/>
-            <output name="ValidatedDataOut" port="1" stream="out:Validation_1"/>
+            <input name="ValidationInput" port="2" stream="out:ConverterOutUnion_1"/>
+            <output name="ValidationOutput" port="1" stream="out:Validation_1"/>
             <param name="file" value="com.iisigroup.iip.customize.Validation_example"/>
         </module-reference>
         <box name="ValidationLPSwitch" type="filter">

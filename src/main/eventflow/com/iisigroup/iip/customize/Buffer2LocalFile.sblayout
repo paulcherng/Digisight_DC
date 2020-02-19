@@ -83,16 +83,16 @@
         <param name="gui:bends:1" value="-468,125;-463,85"/>
         <param name="gui:bends:2" value="-465,285;-433,105"/>
     </component>
+    <component name="Union2">
+        <param name="gui:x" value="-396"/>
+        <param name="gui:y" value="255"/>
+        <param name="gui:bends:1" value="-445,145;-413,275"/>
+    </component>
     <component name="WriteCSV">
         <param name="gui:x" value="263"/>
         <param name="gui:y" value="382"/>
         <param name="gui:bends:1" value="187,435;195,402"/>
         <param name="gui:bends:2" value="213,337;233,422"/>
-    </component>
-    <component name="Union2">
-        <param name="gui:x" value="-396"/>
-        <param name="gui:y" value="255"/>
-        <param name="gui:bends:1" value="-445,145;-413,275"/>
     </component>
     <component name="FolderList">
         <param name="gui:x" value="410"/>
