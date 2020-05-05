@@ -9,8 +9,9 @@
             <param name="fully-qualified-name" value="resources_adapters.JMSinput_template"/>
         </type-metadata>
         <memory-model-settings/>
-        <implements module-reference="com.iisigroup.iip.schemacontrol.SchemaControl"/>
-        <import from="com.iisigroup.iip.schemacontrol.SchemaControl"/>
+        <implements module-reference="DCinterface_1to1.SchemaControl_1to1"/>
+        <import from="DCinterface_1to1.SchemaControl_1to1"/>
+        <import from="test_app.ModifySchema"/>
         <dynamic-variables/>
         <box name="JMSadapter" type="java">
             <output port="1" stream="OutputStream"/>
@@ -20,7 +21,7 @@
             <param name="destinationName" value="testDestination"/>
             <param name="destinationType" value="Preconfigured"/>
             <param name="enableStatusPort" value="false"/>
-            <param name="jmsBodySchema" value="rawData"/>
+            <param name="jmsBodySchema" value="AdapterIn"/>
             <param name="jmsPropertiesSchema" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;schema/&gt;&#13;&#10;"/>
             <param name="logLevel" value="INFO"/>
             <param name="maxMsgsInFlight" value=""/>

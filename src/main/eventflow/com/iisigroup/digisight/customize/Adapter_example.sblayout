@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><application-layout>
+    <component name="InputSchema">
+        <param name="gui:x" value="-207"/>
+        <param name="gui:y" value="-55"/>
+    </component>
+    <component name="WebInput_templateRef1">
+        <param name="gui:x" value="-40"/>
+        <param name="gui:y" value="-44"/>
+        <param name="gui:bends:1" value="-85,-25;-83,-15"/>
+    </component>
+    <component name="Map2">
+        <param name="gui:x" value="119"/>
+        <param name="gui:y" value="-44"/>
+    </component>
+    <component name="RawDataOut">
+        <param name="gui:x" value="216"/>
+        <param name="gui:y" value="-55"/>
+        <param name="gui:bends:1" value="195,-15;197,-25"/>
+    </component>
+    <component name="ModifyPart">
+        <param name="gui:x" value="-96"/>
+        <param name="gui:y" value="-90"/>
+        <param name="gui:width" value="275"/>
+        <param name="gui:height" value="129"/>
+    </component>
+    <gui.group name="ModifyPart" visual-state="open">
+        <member name="Map2"/>
+        <member name="WebInput_templateRef1"/>
+        <param name="gui:x" value="-96"/>
+        <param name="gui:y" value="-90"/>
+        <param name="gui:width" value="275"/>
+        <param name="gui:height" value="129"/>
+    </gui.group>
+</application-layout>

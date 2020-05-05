@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<application version="10.4.3_a45545bc0fa864b6dd457e084eb653f6e2004e05">
+    <annotations>
+        <annotation name="hygienic"/>
+    </annotations>
+    <type-metadata>
+        <param name="type" value="interface"/>
+        <param name="fully-qualified-name" value="DCinterface_1toM.SchemaControl_1toM"/>
+    </type-metadata>
+    <memory-model-settings/>
+    <implements module-reference="test_app.ModifySchema"/>
+    <import from="test_app.ModifySchema"/>
+    <named-schemas>
+        <schema name="AdapterOut">
+            <parent-schemas>
+                <parent-schema name="rawData"/>
+            </parent-schemas>
+            <field name="UUID" type="string"/>
+            <field name="RcvTime" type="timestamp"/>
+        </schema>
+        <schema name="CVSOut">
+            <parent-schemas>
+                <parent-schema name="convertedData"/>
+            </parent-schemas>
+            <field name="UUID" type="string"/>
+            <field name="SrcID" type="string"/>
+            <field name="SnsrType" type="string"/>
+            <field name="SnsrID" type="string"/>
+        </schema>
+    </named-schemas>
+    <dynamic-variables/>
+</application>

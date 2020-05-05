@@ -9,8 +9,9 @@
             <param name="fully-qualified-name" value="resources_adapters.CSVfileReader_template"/>
         </type-metadata>
         <memory-model-settings/>
-        <implements module-reference="com.iisigroup.iip.schemacontrol.SchemaControl"/>
-        <import from="com.iisigroup.iip.schemacontrol.SchemaControl"/>
+        <implements module-reference="DCinterface_1to1.SchemaControl_1to1"/>
+        <import from="DCinterface_1to1.SchemaControl_1to1"/>
+        <import from="test_app.ModifySchema"/>
         <parameter-definitions>
             <parameter default="&quot;&quot;" name="filePath"/>
         </parameter-definitions>
@@ -39,7 +40,7 @@
             <param name="PreserveWhitespace" value="false"/>
             <param name="QuoteChar" value="&quot;"/>
             <param name="Repeat" value="1"/>
-            <param name="Schema" value="rawData"/>
+            <param name="Schema" value="AdapterIn"/>
             <param name="StartControlPort" value="true"/>
             <param name="StartEventPort" value="false"/>
             <param name="TimeBasedEmitField" value=""/>

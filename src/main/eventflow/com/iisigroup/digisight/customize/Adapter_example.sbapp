@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<modify version="10.4.3_a45545bc0fa864b6dd457e084eb653f6e2004e05">
+    <add>
+        <type-metadata>
+            <param name="type" value="module"/>
+            <param name="fully-qualified-name" value="com.iisigroup.digisight.customize.Adapter_example"/>
+        </type-metadata>
+        <memory-model-settings/>
+        <implements module-reference="DCinterface_1to1.SchemaControl_1to1"/>
+        <import from="DCinterface_1to1.SchemaControl_1to1"/>
+        <parameter-definitions>
+            <parameter default="SrcID" name="SrcID"/>
+        </parameter-definitions>
+        <dynamic-variables/>
+        <stream name="InputSchema" schema="AdapterIn"/>
+        <module-reference name="WebInput_templateRef1">
+            <input name="InputStream" port="1" stream="InputSchema"/>
+            <output name="OutputStream" port="1" stream="out:WebInput_templateRef1_1"/>
+            <param name="file" value="resources_adapters.WebInput_template"/>
+        </module-reference>
+        <box name="Map2" type="map">
+            <input port="1" stream="out:WebInput_templateRef1_1"/>
+            <output port="1" stream="RawDataOut"/>
+            <target-list>
+                <item name="input" selection="all"/>
+                <expressions>
+                    <include field="UUID">uuid()</include>
+                    <include field="RcvTime">now()</include>
+                </expressions>
+            </target-list>
+        </box>
+        <output-stream name="RawDataOut" schema="AdapterOut"/>
+    </add>
+</modify>

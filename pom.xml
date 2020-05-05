@@ -7,7 +7,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.iisigroup.iip</groupId>
+	<groupId>com.iisigroup.digisight</groupId>
 	<artifactId>dataConnect_Template</artifactId>
 	<packaging>ep-eventflow-fragment</packaging>
 	<version>0.0.1-SNAPSHOT</version>
@@ -35,12 +35,6 @@
 			<groupId>com.tibco.ep.sb.adapter</groupId>
 			<artifactId>webreader</artifactId>
 			<version>10.4.3</version>
-		</dependency>
-		<dependency>
-			<groupId>com.iisigroup.iip</groupId>
-			<artifactId>utility</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-			<type>ep-eventflow-fragment</type>
 		</dependency>
 		<dependency>
 			<groupId>com.tibco.ep.sb.adapter</groupId>
@@ -72,6 +66,12 @@
 			<groupId>com.tibco.ep.sb.adapter</groupId>
 			<artifactId>mqtt-client</artifactId>
 			<version>10.4.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.iisigroup.digisight</groupId>
+			<artifactId>utility</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ep-eventflow-fragment</type>
 		</dependency>
 	</dependencies>
 	<repositories>
